@@ -11,7 +11,7 @@ $(document).ready(function () {
       this.family = family;
     }
   }
-  const arrayIcons = [
+  let arrayIcons = [
     new Icon('cat', 'fa', 'animal', 'fas'),
     new Icon('dog', 'fa', 'animal', 'fas'),
     new Icon('dove', 'fa', 'animal', 'fas'),
@@ -40,22 +40,21 @@ $(document).ready(function () {
     const {name, prefix, type, family} = animal;
     return {name, prefix, type, family, color: blue};
   });
-  //animalIcons.forEach(animal => animal.color = blue);
+  
   const vegetableIcons = arrayIcons.filter(icon => icon.type == 'vegetable').map(vegetable => {
     const {name, prefix, type, family} = vegetable;
     return {name, prefix, type, family, color: orange};
   });
-  //vegetableIcons.forEach(animal => animal.color = orange);
+  
   const peopleIcons = arrayIcons.filter(icon => icon.type == 'people').map(person => {
     const {name, prefix, type, family} = person;
     return {name, prefix, type, family, color: purple};
   });
-  //peopleIcons.forEach(animal => animal.color = purple);
+  
+  arrayIcons = [...animalIcons, ...vegetableIcons, ...peopleIcons];
   
   //inseriamo le icone colorate nel container
-  showIcons(iconsContainer, animalIcons);
-  showIcons(iconsContainer, vegetableIcons);
-  showIcons(iconsContainer, peopleIcons);
+  showIcons(iconsContainer, arrayIcons);
 
   ///////////////
   // Milestone 3
