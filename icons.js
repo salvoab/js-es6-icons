@@ -59,12 +59,39 @@ $(document).ready(function () {
   ///////////////
   // Milestone 3
   //estrapoliamo i tipi di icone
-
-  //aggiungiamo i tipi alla select
+  let iconTypes = arrayIcons.map(icon => icon.type); //Un array con tutti i tipi di icone (i type sono ripetuti)
+  iconTypes = iconTypes.filter((type,index,allTypes) => allTypes.indexOf(type) === index); //rimuovo i duplicati perché indexOf(type) restituisce il primo indice in cui si trova un type 
+  
+  //aggiungiamo i tipi alla select  
+  iconTypes.forEach(type=>{
+    const markup = `<option value="${type}">${type}</option>`;
+    $('#type').append(markup);
+  });
 
   //al change mostriamo solo le icone filtrate
-  //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo
-  
+  //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo ??????
+  $('#type').change(function () { 
+    const value = this.value;
+    iconsContainer.text(''); // Cancello le icone nel contenitore di icone
+    switch (value) {
+      case 'all':
+        showIcons(iconsContainer, arrayIcons);
+        break;
+      case 'animal':
+        showIcons(iconsContainer, animalIcons);
+        break;
+      case 'vegetable':
+        showIcons(iconsContainer, vegetableIcons);
+        break;
+      case 'people':
+        showIcons(iconsContainer, peopleIcons);
+        break;
+      default:
+        showIcons(iconsContainer, arrayIcons);
+    }
+  });
+
+
 });
 
 
