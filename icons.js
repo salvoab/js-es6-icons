@@ -10,17 +10,24 @@ $(document).ready(function () {
       this.type = type;
       this.family = family;
     }
-  }
+  };
+
   let arrayIcons = [
     new Icon('cat', 'fa', 'animal', 'fas'),
     new Icon('dog', 'fa', 'animal', 'fas'),
     new Icon('dove', 'fa', 'animal', 'fas'),
+    new Icon('dragon', 'fa', 'animal', 'fas'),
+    new Icon('crow', 'fa', 'animal', 'fas'),
+    new Icon('fish', 'fa', 'animal', 'fas'),
     new Icon('carrot', 'fa', 'vegetable', 'fas'),
     new Icon('pepper-hot', 'fa', 'vegetable', 'fas'),
     new Icon('apple-alt', 'fa', 'vegetable', 'fas'),
+    new Icon('lemon', 'fa', 'vegetable', 'fas'),
     new Icon('child', 'fa', 'people', 'fas'),
     new Icon('female', 'fa', 'people', 'fas'),
-    new Icon('male', 'fa', 'people', 'fas')
+    new Icon('male', 'fa', 'people', 'fas'),
+    new Icon('biking', 'fa', 'people', 'fas'),
+    new Icon('user', 'fa', 'people', 'fas')
   ];
   // Selezioniamo il container icons
   const iconsContainer = $('.icons');
@@ -35,21 +42,10 @@ $(document).ready(function () {
   const orange = '#FFA500';
   const purple = '#800080';
   
-  //aggiungiamo dei colori (usando una funzione)
-  const animalIcons = arrayIcons.filter(icon => icon.type == 'animal').map(animal => {
-    const {name, prefix, type, family} = animal;
-    return {name, prefix, type, family, color: blue};
-  });
-  
-  const vegetableIcons = arrayIcons.filter(icon => icon.type == 'vegetable').map(vegetable => {
-    const {name, prefix, type, family} = vegetable;
-    return {name, prefix, type, family, color: orange};
-  });
-  
-  const peopleIcons = arrayIcons.filter(icon => icon.type == 'people').map(person => {
-    const {name, prefix, type, family} = person;
-    return {name, prefix, type, family, color: purple};
-  });
+  //aggiungiamo dei colori usando una funzione
+  const animalIcons = newColoredIcons(arrayIcons, 'animal', blue); 
+  const vegetableIcons = newColoredIcons(arrayIcons, 'vegetable', orange);
+  const peopleIcons = newColoredIcons(arrayIcons, 'people', purple);
   
   arrayIcons = [...animalIcons, ...vegetableIcons, ...peopleIcons];
   
@@ -110,5 +106,15 @@ function showIcons(selector, icons){
     </div>
     `;
     selector.append(markup);
+  });
+}
+
+///////////////
+// Milestone 2
+//funzione per assegnare un colore ad un'icona
+function newColoredIcons(icons, type, color){
+  return icons.filter(icon => icon.type == type).map(filteredIcon => {
+    const {name, prefix, type, family} = filteredIcon;
+    return {name, prefix, type, family, color};
   });
 }
