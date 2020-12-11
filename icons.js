@@ -13,21 +13,21 @@ $(document).ready(function () {
   };
 
   let arrayIcons = [
-    new Icon('cat', 'fa', 'animal', 'fas'),
-    new Icon('dog', 'fa', 'animal', 'fas'),
-    new Icon('dove', 'fa', 'animal', 'fas'),
-    new Icon('dragon', 'fa', 'animal', 'fas'),
-    new Icon('crow', 'fa', 'animal', 'fas'),
-    new Icon('fish', 'fa', 'animal', 'fas'),
-    new Icon('carrot', 'fa', 'vegetable', 'fas'),
-    new Icon('pepper-hot', 'fa', 'vegetable', 'fas'),
-    new Icon('apple-alt', 'fa', 'vegetable', 'fas'),
-    new Icon('lemon', 'fa', 'vegetable', 'fas'),
-    new Icon('child', 'fa', 'people', 'fas'),
-    new Icon('female', 'fa', 'people', 'fas'),
-    new Icon('male', 'fa', 'people', 'fas'),
-    new Icon('biking', 'fa', 'people', 'fas'),
-    new Icon('user', 'fa', 'people', 'fas')
+    new Icon('cat', 'fa-', 'animal', 'fas'),
+    new Icon('dog', 'fa-', 'animal', 'fas'),
+    new Icon('dove', 'fa-', 'animal', 'fas'),
+    new Icon('dragon', 'fa-', 'animal', 'fas'),
+    new Icon('crow', 'fa-', 'animal', 'fas'),
+    new Icon('fish', 'fa-', 'animal', 'fas'),
+    new Icon('carrot', 'fa-', 'vegetable', 'fas'),
+    new Icon('pepper-hot', 'fa-', 'vegetable', 'fas'),
+    new Icon('apple-alt', 'fa-', 'vegetable', 'fas'),
+    new Icon('lemon', 'fa-', 'vegetable', 'fas'),
+    new Icon('child', 'fa-', 'people', 'fas'),
+    new Icon('female', 'fa-', 'people', 'fas'),
+    new Icon('male', 'fa-', 'people', 'fas'),
+    new Icon('biking', 'fa-', 'people', 'fas'),
+    new Icon('user', 'fa-', 'people', 'fas')
   ];
   // Selezioniamo il container icons
   const iconsContainer = $('.icons');
@@ -105,9 +105,10 @@ $(document).ready(function () {
  */
 function showIcons(selector, icons){
   icons.forEach(icon => {
+    const {name, prefix, family, color} = icon;
     const markup = `
     <div>
-      <i class="${icon.family} ${icon.prefix}-${icon.name}" style="color:${icon.color}"></i>
+      <i class="${family} ${prefix + name}" style="color:${color}"></i>
       <div class="title">${icon.name.toUpperCase()}</div>
     </div>
     `;
