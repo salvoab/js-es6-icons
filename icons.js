@@ -65,7 +65,6 @@ $(document).ready(function () {
   });
 
   //al change mostriamo solo le icone filtrate
-  //mostriamo come passare un parametro a change e contemporaneamente destrutturiamo ??????
   $('#type').change(function () { 
     const value = this.value;
     iconsContainer.text(''); // Cancello le icone nel contenitore di icone
@@ -97,6 +96,13 @@ $(document).ready(function () {
 // Creiamo una funzione per iterare nell'array e che appenda al container le icone.
 // tip: possiamo usare un ciclo foreach qui e destrutturare gli le proprieta degli elementi di un array
 // tip: il template literal ci puo aiutare con il markup
+
+/**
+ * Inserisce in append delle icone all'interno di un elemento html selezionato con jQuery.
+ * 
+ * @param {jQuery} selector Selettore jQuery.
+ * @param {array} icons Array di icone.
+ */
 function showIcons(selector, icons){
   icons.forEach(icon => {
     const markup = `
@@ -112,6 +118,15 @@ function showIcons(selector, icons){
 ///////////////
 // Milestone 2
 //funzione per assegnare un colore ad un'icona
+
+/**
+ * Restituisce un array formato da icone del tipo specificato alle quali è stato aggiunto il colore specificato.
+ * 
+ * @param {array} icons Array di icone.
+ * @param {string} type Tipo di icona a cui aggiungere un colore.
+ * @param {string} color Codice del colore da aggiungere.
+ * @return {array} Array di icone di tipo 'type' e colore 'color'.
+ */
 function newColoredIcons(icons, type, color){
   return icons.filter(icon => icon.type == type).map(filteredIcon => {
     const {name, prefix, type, family} = filteredIcon;
